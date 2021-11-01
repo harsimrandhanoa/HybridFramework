@@ -1,0 +1,177 @@
+{
+  "createPortfolio": [
+    {
+      "keyword": "click",
+      "object": "createPortfolio_id"
+    },
+    {
+      "keyword": "clear",
+      "object": "porfolioname_id"
+    },
+    {
+      "keyword": "type",
+      "object": "porfolioname_id",
+      "dataKey": "portfolioname"
+    },
+    {
+      "keyword": "click",
+      "object": "createPortfolioButton_css"
+    },
+    {
+      "keyword": "waitForPageToLoad"
+    }
+  ],
+  "deletePortfolio": [
+    {
+      "keyword": "selectByVisibleText",
+      "object": "portfolioid_dropdown_id",
+      "dataKey": "portfolioname"
+    },
+    {
+      "keyword": "waitForPageToLoad"
+    },
+    {
+      "keyword": "click",
+      "object": "deletePortfolio_id"
+    },
+    {
+      "keyword": "acceptAlert"
+    },
+    {
+      "keyword": "validateSelectedValueNotInDropDown",
+      "object": "portfolioid_dropdown_id",
+      "dataKey": "portfolionname"
+    }
+  ],
+  "selectPortfolio": [
+    {
+      "keyword": "selectByVisibleText",
+      "object": "portfolioid_dropdown_id",
+      "dataKey": "portfolioname"
+    },
+    {
+      "keyword": "waitForPageToLoad"
+    }
+  ],
+  "addNewStock": [
+    {
+      "keyword": "findCurrentStockQuantity",
+      "dataKey": "stockname",
+      "storVal": "quantityBeforeModification"
+    },
+    {
+      "keyword": "click",
+      "object": "addStock_id"
+    },
+    {
+      "keyword": "typeHalf",
+      "object": "addstockname_css",
+      "dataKey": "stockname"
+    },
+    {
+      "keyword": "threadWait",
+      "dataKey": "5"
+    },
+    {
+      "keyword": "clickOnText",
+      "dataKey": "stockname"
+    },
+    {
+      "keyword": "click",
+      "object": "stockPurchaseDate_id"
+    },
+    {
+      "keyword": "selectDateFromCalendar",
+      "dataKey": "date"
+    },
+    {
+      "keyword": "type",
+      "object": "addstockqty_id",
+      "dataKey": "quantity"
+    },
+    {
+      "keyword": "type",
+      "object": "addstockprice_id",
+      "dataKey": "price"
+    },
+    {
+      "keyword": "click",
+      "object": "addStockButton_id"
+    }
+  ],
+  "verifyStockPresent": [
+    {
+      "keyword": "waitForPageToLoad"
+    },
+    {
+      "keyword": "verifyStockPresent",
+      "dataKey": "stockname"
+    }
+    ],
+     "verifyStockQuantity": [
+    {
+      "keyword": "findCurrentStockQuantity",
+      "dataKey": "stockname",
+      "storVal": "modifiedQuantity"
+    },
+    {
+      "keyword": "validateStockModification",
+      "object": "quantityBeforeModification,modifiedQuantity",
+      "dataKey": "quantity,action"
+    }
+  ],
+  "verifyTransactionHistory": [
+    {
+      "keyword": "goToTransactionHistory",
+      "dataKey": "stockname"
+    },
+    {
+      "keyword": "validateTransactionHistory",
+      "dataKey": "quantity,action"
+    }
+  ],
+  "modifyStock": [
+    {
+      "keyword": "findCurrentStockQuantity",
+      "dataKey": "stockname",
+      "storVal": "quantityBeforeModification"
+    },
+    {
+      "keyword": "goToBuySell",
+      "dataKey": "stockname"
+    },
+     {
+      "keyword": "selectByVisibleText",
+      "object": "equityaction_id",
+      "dataKey": "action"
+    },
+    
+    {
+      "keyword": "click",
+      "object": "buySellCalendar_id"
+    },
+    {
+      "keyword": "selectDateFromCalendar",
+      "dataKey": "date"
+    },
+    {
+      "keyword": "type",
+      "object": "buysellqty_id",
+      "dataKey": "quantity"
+    },
+    {
+      "keyword": "type",
+      "object": "buysellprice_id",
+      "dataKey": "price"
+    },
+    {
+      "keyword": "click",
+      "object": "buySellStockButton_id"
+    },
+    {
+      "keyword": "waitForPageToLoad"
+    }
+  ]
+}
+	
+
