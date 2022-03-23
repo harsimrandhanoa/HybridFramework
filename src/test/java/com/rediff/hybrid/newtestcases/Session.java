@@ -2,8 +2,6 @@ package com.rediff.hybrid.newtestcases;
 
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
-
-import com.aventstack.extentreports.Status;
 import com.rediff.hybrid.base.ApplicationKeywords;
 import com.rediff.hybrid.base.BaseTest;
 
@@ -17,8 +15,7 @@ public class Session extends BaseTest{
         
 		app.navigate("url");
 		app.type("username_css", "abc");
-
-		app.type("password_css", "123");
+        app.type("password_css", "123");
 		app.validateElementPresent("loginButton_css");
 		app.click("loginButton_css");
 		app.validateLogin();

@@ -1,9 +1,7 @@
 package com.rediff.hybrid.base;
 
 import java.time.Duration;
-import java.util.Properties;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,7 +21,7 @@ public class ValidationKeywords extends GenericKeywords {
 		String locator = prop.getProperty(locatorKey);
 		// failure
 		boolean result = isElementPresent(locator);
-		// reportFailure("Element not found "+ locator,true);
+	   // reportFailure("Element not found "+ locator,true);
 	}
 
 	public void validateLogin() {

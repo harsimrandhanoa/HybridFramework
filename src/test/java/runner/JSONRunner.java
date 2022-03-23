@@ -8,6 +8,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
+import util.ReadDataSample;
+
 public class JSONRunner {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
@@ -32,10 +34,6 @@ public class JSONRunner {
 
 				Map<String, String> testSuiteData = jsonRunnerHelper
 						.getTestSuiteData((JSONObject) testSuites.get(tsId));
-
-				// To read from excel file
-				// File testDataXLSFile =new
-				// File(System.getProperty("user.dir")+"//src//test//resources//json//"+testDataJsonFile);
 
 				if (!testSuiteData.isEmpty()) {
 					jsonRunnerHelper.addSuiteToRunner(testNG, testSuiteData);
@@ -67,10 +65,11 @@ public class JSONRunner {
 
 								int testdatasets = new DataUtil().getTestDataSets(testDataJsonFilePath, dataflag);
 
-								// To read from excel
-								// int testdatasets = new
-								// ReadDataSample().getTestDataSets(testdataexcelfile,dataflag,name);
 
+						/*  To read from excel file
+						 String testDataXLSFilePath = System.getProperty("user.dir")+"//src//test//resources//json//"+testSuiteData.get("xlsFilePath");
+                         int testdatasets  = new ReadDataSample().getTestDataSets(testDataXLSFilePath,dataflag,testSuiteData.get("name"));
+				    	*/	
 								for (int dsId = 0; dsId < testdatasets; dsId++) {
 									JSONArray parametervalues = (JSONArray) executionData.get("parameterValues");
 									JSONArray methods = (JSONArray) executionData.get("methods");
@@ -84,8 +83,7 @@ public class JSONRunner {
 									testNG.addTestParameter("datafilepath", testDataJsonFilePath);
 
 									// To read from excel
-
-									// testNG.addTestParameter("datafilepath",testdataexcelfile);
+                                   //testNG.addTestParameter("datafilepath",testDataXLSFilePath);
 
 									testNG.addTestParameter("dataflag", dataflag);
 									testNG.addTestParameter("iteration", String.valueOf(dsId));
@@ -102,6 +100,5 @@ public class JSONRunner {
 			}
 		}
 		testNG.run();
-
-	}
+    }
 }

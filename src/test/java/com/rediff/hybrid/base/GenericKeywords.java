@@ -2,6 +2,7 @@ package com.rediff.hybrid.base;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,7 +10,6 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -18,10 +18,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -29,11 +26,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -81,8 +76,12 @@ public class GenericKeywords {
 		DesiredCapabilities cap = new DesiredCapabilities();
 		if (browser.equals("Mozilla")) {
 
-			// driver = new RemoteWebDriver(new
-			// URL("http://192.168.56.1:4444/"), firefoxOptions);
+			 try {
+				driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444/"), firefoxOptions);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		} else if (browser.equals("Chrome")) {
 

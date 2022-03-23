@@ -3,16 +3,12 @@ package com.rediff.hybrid.newtestcases;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.ITestContext;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.rediff.hybrid.base.BaseTest;
-
-import util.ReadExcel;
 
 public class StockManagement extends BaseTest {
 

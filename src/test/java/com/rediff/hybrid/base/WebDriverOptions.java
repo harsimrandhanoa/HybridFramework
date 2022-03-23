@@ -10,7 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class WebDriverOptions {
 
 	public static ChromeDriver getChromeDriver(Properties prop) {
-		System.setProperty("webdriver.chrome.driver", prop.getProperty("chromedriver"));
+		String chromeDriverLocation =  System.getProperty("user.dir") +prop.getProperty("chromedriver");
+		System.setProperty("webdriver.chrome.driver",chromeDriverLocation);
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("start-maximized");
 		options.addArguments("disable-infobards");
@@ -19,13 +20,15 @@ public class WebDriverOptions {
 	}
 
 	public static FirefoxDriver getFirefoxDriver(Properties prop) {
-		System.setProperty("webdriver.gecko.driver", prop.getProperty("firefoxdriver"));
-		return new FirefoxDriver();
+		String firefoxDriverLocation =  System.getProperty("user.dir") + prop.getProperty("firefoxdriver");
+        System.setProperty("webdriver.gecko.driver",firefoxDriverLocation);
+        return new FirefoxDriver();
 	}
 
 	public static EdgeDriver getEdgeDriver(Properties prop) {
-		System.setProperty("webdriver.ie.driver", prop.getProperty("edgedriver"));
-		return new EdgeDriver();
+		String edgeDriverLocation =  System.getProperty("user.dir") + prop.getProperty("edgedriver");
+        System.setProperty("webdriver.ie.driver", edgeDriverLocation);
+        return new EdgeDriver();
 	}
 
 }

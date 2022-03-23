@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
-
 import org.openqa.selenium.By;
 import org.testng.asserts.SoftAssert;
 
