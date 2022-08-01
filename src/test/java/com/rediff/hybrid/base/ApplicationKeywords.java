@@ -11,8 +11,9 @@ import com.aventstack.extentreports.ExtentTest;
 
 public class ApplicationKeywords extends ValidationKeywords {
 
-	public ApplicationKeywords() {
-		String path = System.getProperty("user.dir") + "//src//test//resources//env.properties";
+	public ApplicationKeywords(ExtentTest test) {
+		this.test = test;
+        String path = System.getProperty("user.dir") + "//src//test//resources//env.properties";
 		prop = new Properties();
 		envProp = new Properties();
 		try {
@@ -78,7 +79,9 @@ public class ApplicationKeywords extends ValidationKeywords {
 
 	public void findCurrentStockQuantity(String companyName, String storVal) {
 		log("Finding current stock quantity for " + companyName);
+
 		int row = getRowNumWithCellData("stocktable_css", companyName);
+
 		if (row == -1) {
 			log("Current Stock Quantity is 0 as Stock not present in list");
 			context.setAttribute(storVal, String.valueOf("0"));
@@ -88,9 +91,11 @@ public class ApplicationKeywords extends ValidationKeywords {
 				.findElement(By.cssSelector(
 						prop.getProperty("stocktable_css") + " > tr:nth-child(" + row + ") >td:nth-child(4)"))
 				.getText();
-		log("Current stock Quantity " + quantity);
+       log("Current stock Quantity " + quantity);
+
 
 		context.setAttribute(storVal, quantity);
+
 
 	}
 

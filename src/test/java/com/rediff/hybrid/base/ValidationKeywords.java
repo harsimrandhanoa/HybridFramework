@@ -26,7 +26,7 @@ public class ValidationKeywords extends GenericKeywords {
 
 	public void validateLogin() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.urlToBe("https://portfolio.rediff.com/portfolio"));
 	}
 

@@ -21,8 +21,8 @@ public class DriverScript {
 	JSONObject testData;
 	ITestContext context;
 
-	public DriverScript() {
-		app = new ApplicationKeywords();
+	public DriverScript(ExtentTest test) {
+		app = new ApplicationKeywords(test);
 	}
 
 	public void executeTest(ReadExcel xls, String sheet, String testName)
@@ -40,10 +40,10 @@ public class DriverScript {
 				String object = ReadExcel.getCellDataForColumn(sheet, "Object", rNum);
 				String dataKey = ReadExcel.getCellDataForColumn(sheet, "Data", rNum);
 				String data = (String) testData.get(dataKey);
-
+				
 				String storVal = ReadExcel.getCellDataForColumn(sheet, "StorVal", rNum);
-
-				executeTestBasedOnKeyword(keyword, object, data, dataKey, storVal);
+				
+			  executeTestBasedOnKeyword(keyword, object, data, dataKey, storVal);
 
 			}
 
@@ -70,16 +70,17 @@ public class DriverScript {
 			String data = (String) testData.get(dataKey);
 
 			String storVal = (String) testStep.get("storVal");
-
-			executeTestBasedOnKeyword(keyword, object, data, dataKey, storVal);
+			
+			
+           executeTestBasedOnKeyword(keyword, object, data, dataKey, storVal);
 		}
 	}
 
 	public void executeTestBasedOnKeyword(String keyword, String object, String data, String dataKey, String storVal)
 			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
 			InvocationTargetException {
-
-		switch (keyword) {
+      
+	switch (keyword) {
 		case "click":
 		case "clear":
 			callMethodByName(keyword, object);
@@ -97,9 +98,8 @@ public class DriverScript {
 			break;
 
 		case "findCurrentStockQuantity":
-			callMethodByName(keyword, data, storVal);
-
-			break;
+            callMethodByName(keyword, data, storVal);
+            break;
 
 		case "threadWait":
 			callMethodByName(keyword, Integer.parseInt(dataKey));
@@ -163,6 +163,7 @@ public class DriverScript {
 
 	public void callMethodByName(String keyword, String arg1) throws NoSuchMethodException, SecurityException,
 			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+
 		Method method;
 		method = ApplicationKeywords.class.getMethod(keyword, String.class);
 		method.invoke(app, arg1);

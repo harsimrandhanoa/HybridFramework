@@ -56,11 +56,10 @@ public class BaseTest {
 
 			test.log(Status.SKIP, "Skipping as runmod is N");
 			throw new SkipException("Skipping as runmod is N");
+        }
 
-		}
-
-		ds = new DriverScript(); // 1 app driver script object for entire test -All @Test
-		ds.setReport(test); // passed the test object created above to Driver Script Class
+		ds = new DriverScript(test); // 1 app driver script object for entire test -All @Test
+		//ds.setReport(test); // passed the test object created above to Driver Script Class
 		// Things to note test object is send to ds but also set in context
 		// above to be shared between various methods in this context. same is true for data object
 		ds.setData(data); // send json data object to ds as well.
@@ -83,15 +82,15 @@ public class BaseTest {
 		// Use these variables set in before test in each method
 
 		ds = (DriverScript) context.getAttribute("driverScript");
-		rep = (ExtentReports) context.getAttribute("report");
+	//	rep = (ExtentReports) context.getAttribute("report");
 	}
 
 	@AfterTest(alwaysRun = true)
 	public void quit(ITestContext context) {
-		ds = (DriverScript) context.getAttribute("driverScript");
+		//ds = (DriverScript) context.getAttribute("driverScript");
 		if (ds != null)
 			ds.quit();
-		rep = (ExtentReports) context.getAttribute("report");
+	//	rep = (ExtentReports) context.getAttribute("report");
 		if (rep != null)
 			rep.flush();
 
